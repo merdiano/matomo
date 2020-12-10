@@ -121,6 +121,8 @@ class SegmentEditorTest extends IntegrationTestCase
         try {
             $model->getSegmentsToAutoArchive(33);
             $this->fail();
+        } catch(\PHPUnit\Framework\Exception $e) {
+            throw $e;
         } catch(Exception $e) {
             // expected
         }

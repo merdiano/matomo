@@ -102,6 +102,8 @@ class VisitsInPastInvalidateOldReportsTest extends SystemTestCase
             $request = new Request("module=API&method=CoreAdminHome.invalidateArchivedReports&idSites=" . $idSiteNoAccess . "&dates=2010-03-03&format=original");
             $request->process();
             $this->fail();
+        } catch(\PHPUnit\Framework\Exception $e) {
+            throw $e;
         } catch(Exception $e) {}
 
         // test an invalidate period parameter
@@ -110,6 +112,8 @@ class VisitsInPastInvalidateOldReportsTest extends SystemTestCase
             $request = new Request("module=API&method=CoreAdminHome.invalidateArchivedReports&period=$invalidPeriod&idSites=$idSite&dates=2010-03-03&format=original");
             $request->process();
             $this->fail();
+        } catch(\PHPUnit\Framework\Exception $e) {
+            throw $e;
         } catch(Exception $e) {}
 
         // 2) Call API again, with an older date, which should now return data
